@@ -1,0 +1,142 @@
+@import './variables.css';
+@import './typography.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background: var(--mint-gray);
+  color: var(--primary-blue);
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--heading-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-green);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* Global Form Styling */
+input, select, textarea {
+  font-family: inherit;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  outline: none;
+  transition: var(--transition);
+  background: white;
+  width: 100%;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(31, 60, 136, 0.1);
+}
+
+/* Base Components based on UX guidelines */
+
+.btn-primary {
+  background: var(--color-emerald);
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: var(--border-radius);
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  letter-spacing: 0;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: var(--color-emerald-hover);
+  box-shadow: 0 14px 24px rgba(27, 138, 75, 0.2);
+}
+
+.card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* --- Global Stealth Scrollbar Fix --- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+::-webkit-scrollbar {
+  width: var(--scrollbar-width) !important;
+  height: var(--scrollbar-width) !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb) !important;
+  border-radius: 100px !important;
+  border: none !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover) !important;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #10B981 !important;
+}
+
+/* Force hidden until hover for major dash containers */
+[class*="sidebar"], [class*="mainContent"], [class*="Grid"], [class*="List"], [class*="Container"] {
+  scrollbar-width: thin;
+}
+
+[class*="sidebar"]::-webkit-scrollbar-thumb, 
+[class*="mainContent"]::-webkit-scrollbar-thumb,
+[class*="Grid"]::-webkit-scrollbar-thumb,
+[class*="List"]::-webkit-scrollbar-thumb,
+[class*="Container"]::-webkit-scrollbar-thumb {
+  background: transparent !important;
+}
+
+[class*="sidebar"]:hover::-webkit-scrollbar-thumb, 
+[class*="mainContent"]:hover::-webkit-scrollbar-thumb,
+[class*="Grid"]:hover::-webkit-scrollbar-thumb,
+[class*="List"]:hover::-webkit-scrollbar-thumb,
+[class*="Container"]:hover::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb) !important;
+}

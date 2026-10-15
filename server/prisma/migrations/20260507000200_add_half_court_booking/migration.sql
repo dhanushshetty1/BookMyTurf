@@ -1,0 +1,12 @@
+ALTER TYPE "SlotStatus" ADD VALUE 'PARTIALLY_BOOKED';
+
+CREATE TYPE "BookingType" AS ENUM ('FULL', 'HALF');
+
+ALTER TABLE "Court"
+  ADD COLUMN "allowHalfCourtBooking" BOOLEAN NOT NULL DEFAULT false,
+  ADD COLUMN "halfCourtPricePerHour" DOUBLE PRECISION,
+  ADD COLUMN "halfCourtWeekendPricePerHour" DOUBLE PRECISION;
+
+ALTER TABLE "Booking"
+  ADD COLUMN "bookingType" "BookingType" NOT NULL DEFAULT 'FULL',
+  ADD COLUMN "courtUnits" INTEGER NOT NULL DEFAULT 2;

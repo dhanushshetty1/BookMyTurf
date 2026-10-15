@@ -1,0 +1,179 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(uuid())
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         Role      @default(USER)
+  phone        String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  bookings     Booking[]
+  turfs        Turf[]    @relation("OwnerTurfs")
+}
+
+model Turf {
+  id            String     @id @default(uuid())
+  ownerId       String
+  name          String
+  location      String
+  openingTime   String?
+  closingTime   String?
+  contactNumber String?
+  address       String?
+  facilities    String[]
+  googleMapsUrl String?
+  latitude      Float?
+  longitude     Float?
+  images        String[]
+  status        TurfStatus @default(ACTIVE)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  bookings      Booking[]
+  courts        Court[]
+  owner         User       @relation("OwnerTurfs", fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@index([ownerId])
+}
+
+model Court {
+  id                  String     @id @default(uuid())
+  turfId              String
+  sharedCourtGroupId  String?
+  name                String
+  type                CourtType
+  pricePerHour        Float
+  weekendPricePerHour Float?
+  allowHalfCourtBooking Boolean    @default(false)
+  halfCourtPricePerHour Float?
+  halfCourtWeekendPricePerHour Float?
+  images              String[]
+  status              TurfStatus @default(ACTIVE)
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+  bookings            Booking[]
+  turf                Turf       @relation(fields: [turfId], references: [id], onDelete: Cascade)
+  slots               Slot[]
+
+  @@index([turfId])
+  @@index([sharedCourtGroupId])
+}
+
+model Slot {
+  id           String     @id @default(uuid())
+  courtId      String
+  startTimeUTC DateTime
+  endTimeUTC   DateTime
+  status       SlotStatus @default(AVAILABLE)
+  price        Float?
+  blockReason  String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  bookings     Booking[]
+  court        Court      @relation(fields: [courtId], references: [id], onDelete: Cascade)
+
+  @@unique([courtId, startTimeUTC])
+  @@index([courtId])
+  @@index([startTimeUTC])
+}
+
+model Booking {
+  id            String        @id @default(uuid())
+  bookingCode   String?       @unique
+  userId        String?
+  turfId        String
+  courtId       String
+  slotId        String
+  paymentStatus PaymentStatus @default(PENDING)
+  bookingStatus BookingStatus @default(PENDING)
+  totalAmount   Float
+  bookingType   BookingType   @default(FULL)
+  courtUnits    Int           @default(2)
+  paymentTxId   String?
+  isOffline     Boolean       @default(false)
+  guestName     String?
+  guestPhone    String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  court         Court         @relation(fields: [courtId], references: [id], onDelete: Cascade)
+  slot          Slot          @relation(fields: [slotId], references: [id], onDelete: Cascade)
+  turf          Turf          @relation(fields: [turfId], references: [id], onDelete: Cascade)
+  user          User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  payment       Payment?
+
+  @@index([userId])
+  @@index([turfId])
+  @@index([courtId])
+  @@index([slotId])
+}
+
+model Payment {
+  id                String        @id @default(uuid())
+  bookingId         String        @unique
+  razorpayOrderId   String        @unique
+  razorpayPaymentId String?
+  razorpaySignature String?
+  amount            Float
+  currency          String        @default("INR")
+  platformFee       Float
+  ownerShare        Float
+  status            PaymentStatus @default(PENDING)
+  failureReason     String?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  booking           Booking       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+  @@index([status])
+}
+
+enum Role {
+  USER
+  OWNER
+  ADMIN
+}
+
+enum CourtType {
+  TENNIS
+  CRICKET
+  FOOTBALL
+  PICKLEBALL
+}
+
+enum TurfStatus {
+  ACTIVE
+  INACTIVE
+  MAINTENANCE
+}
+
+enum SlotStatus {
+  AVAILABLE
+  PARTIALLY_BOOKED
+  BOOKED
+  BLOCKED
+}
+
+enum BookingType {
+  FULL
+  HALF
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+}

@@ -1,0 +1,352 @@
+/* Splash Screen & Onboarding Styles */
+
+.bmt-splash-container {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 35%, rgba(118, 186, 27, 0.16), transparent 28%),
+              linear-gradient(145deg, #ffffff 0%, #f0f7ff 46%, #e0efff 100%);
+}
+
+.bmt-splash-overlay {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  height: 10rem;
+  background: gradient(to bottom, rgba(10, 38, 71, 0.1), transparent);
+}
+
+.bmt-splash-content {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 24rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bmt-logo-wrapper {
+  position: relative;
+  display: grid;
+  width: 9rem;
+  height: 9rem;
+  place-items: center;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 28px 80px rgba(10, 38, 71, 0.18);
+  border: 1px solid white;
+}
+
+.bmt-logo-shimmer {
+  position: absolute;
+  inset: 0;
+  border-radius: 2rem;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+.bmt-logo-img {
+  position: relative;
+  width: 7rem;
+  height: 7rem;
+  object-fit: contain;
+}
+
+.bmt-splash-text {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.bmt-splash-eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: rgba(10, 38, 71, 0.65);
+}
+
+.bmt-splash-title {
+  margin-top: 0.75rem;
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: var(--color-primary-navy);
+}
+
+.bmt-progress-container {
+  margin-top: 2.5rem;
+  height: 0.25rem;
+  width: 14rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: rgba(10, 38, 71, 0.1);
+}
+
+.bmt-progress-bar {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #0A2647, #1677be, #76BA1B);
+}
+
+/* Onboarding */
+.bmt-onboarding-section {
+  min-height: 100vh;
+  background-color: #f7fbff;
+}
+
+.bmt-onboarding-container {
+  margin: 0 auto;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 72rem;
+  flex-direction: column;
+  padding: 1.5rem 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .bmt-onboarding-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.bmt-onboarding-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bmt-header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bmt-header-icon {
+  display: grid;
+  height: 2.75rem;
+  width: 2.75rem;
+  place-items: center;
+  border-radius: 1rem;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.bmt-header-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary-navy);
+}
+
+.bmt-skip-btn {
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  transition: all 0.2s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.bmt-skip-btn:hover {
+  background: white;
+  color: var(--color-primary-navy);
+}
+
+.bmt-onboarding-grid {
+  display: grid;
+  flex: 1;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 2.5rem 0;
+}
+
+@media (min-width: 1024px) {
+  .bmt-onboarding-grid {
+    grid-template-columns: 1.08fr 0.92fr;
+  }
+}
+
+.bmt-card-eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: #1677be;
+}
+
+.bmt-card-title {
+  margin-top: 1rem;
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-primary-navy);
+}
+
+@media (min-width: 640px) {
+  .bmt-card-title {
+    font-size: 3rem;
+  }
+}
+
+.bmt-card-body {
+  margin-top: 1.25rem;
+  max-width: 32rem;
+  font-size: 1.125rem;
+  line-height: 2rem;
+  color: #475569;
+}
+
+.bmt-controls-container {
+  margin-top: 2.5rem;
+  max-width: 28rem;
+}
+
+.bmt-action-btns {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bmt-btn-back {
+  height: 3rem;
+  border-radius: 9999px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  padding: 0 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary-navy);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.bmt-btn-back:hover {
+  border-color: rgba(22, 119, 190, 0.4);
+}
+
+.bmt-btn-back:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.bmt-btn-next {
+  height: 3rem;
+  border-radius: 9999px;
+  background: var(--color-primary-navy);
+  padding: 0 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 16px 34px rgba(10, 38, 71, 0.25);
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.bmt-btn-next:hover {
+  background: #10386f;
+}
+
+/* Visualization Cards */
+.bmt-visual-container {
+  position: relative;
+  margin: 0 auto;
+  aspect-ratio: 0.82;
+  width: 100%;
+  max-width: 24rem;
+}
+
+@media (min-width: 640px) {
+  .bmt-visual-container {
+    max-width: 28rem;
+  }
+}
+
+.bmt-visual-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: white;
+  padding: 1.75rem;
+  box-shadow: 0 24px 80px rgba(10, 38, 71, 0.14);
+}
+
+.bmt-card-inner {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bmt-step-icon {
+  display: grid;
+  height: 4rem;
+  width: 4rem;
+  place-items: center;
+  border-radius: 1.5rem;
+  background: #eaf5ff;
+}
+
+.bmt-step-label {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--color-accent-green);
+}
+
+.bmt-step-title {
+  margin-top: 0.75rem;
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-primary-navy);
+}
+
+.bmt-slot-preview {
+  border-radius: 1.5rem;
+  background: #f2f8ff;
+  padding: 1.25rem;
+}
+
+.bmt-slot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.bmt-live-indicator {
+  color: var(--color-accent-green);
+}
+
+.bmt-slot-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.bmt-slot-item {
+  border-radius: 1rem;
+  background: white;
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary-navy);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}

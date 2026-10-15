@@ -1,0 +1,65 @@
+:root {
+  --primary-blue: #12372A;
+  --primary-green: #1B8A4B;
+
+  --bg-light: #F6F8F5;
+  --mint-gray: #EAF4EC;
+  --text-dark: #10231D;
+  --text-muted: #64736C;
+  
+  --surface: #ffffff;
+  --border-color: #DDE7E0;
+
+  --gradient-main: linear-gradient(135deg, #12372A, #1B8A4B);
+
+  --border-radius: 10px;
+  --transition: 0.3s ease;
+  
+  --shadow-sm: 0 2px 8px rgba(18, 55, 42, 0.06);
+  --shadow-md: 0 12px 28px rgba(18, 55, 42, 0.08);
+  --shadow-lg: 0 20px 45px rgba(18, 55, 42, 0.12);
+
+  /* Stealth Scrollbar Tokens */
+  --scrollbar-width: 6px;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: rgba(148, 163, 184, 0.3);
+  --scrollbar-thumb-hover: rgba(148, 163, 184, 0.5);
+
+  /* Customer booking theme */
+  --color-emerald: #1B8A4B;
+  --color-emerald-hover: #146C3B;
+  --color-neon-green: #1B8A4B;
+  --color-slate-900: #10231D;
+  --color-slate-800: #243C33;
+  --color-slate-700: #42564E;
+  
+  --search-bg: #ffffff;
+  --search-text: #10231D;
+  --search-shadow: 0 22px 50px rgba(18, 55, 42, 0.16);
+  
+  --font-athletic: 'Plus Jakarta Sans', 'Inter', sans-serif;
+
+  /* Theme Specifics */
+  --bg-page: #F6F8F5;
+  --card-bg: #FFFFFF;
+  --heading-color: #10231D;
+  --border-radius-xl: 16px;
+  --accent-bg: #EAF4EC;
+  --accent: #1B8A4B;
+  --bg: #FFFFFF;
+  --border: #DDE7E0;
+}
+
+[data-theme='dark'] {
+  --scrollbar-thumb: rgba(255, 255, 255, 0.1);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.2);
+  
+  --search-bg: var(--color-slate-800);
+  --search-text: #F8FAFC;
+  --search-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+
+  --bg-page: #061A12;
+  --card-bg: #18181B;
+  --heading-color: #FFFFFF;
+  --border-radius-xl: 16px;
+}
